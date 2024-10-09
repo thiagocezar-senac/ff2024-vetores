@@ -1,17 +1,24 @@
-// Crie um algoritmo que leia um vetor de 5 números inteiros e mostre-os.
+// Crie um algoritmo que leia 4 notas, mostre as notas e a média na tela.
 
-let numeros = [];
-for (let i = 0; i < 5; i++) {
-
-    let numero = prompt("Insira um número");
-
-    while (isNaN(numero)) {
-        alert("Isso não é um número válido!")
-        numero = prompt("Insira um número novamente!")
+let notas = [];
+for (let i = 0; i < 4; i++) {
+    let nota = prompt(`Informe a ${i + 1} nota:`);
+    nota = nota.replace(',','.');
+    while (isNaN(nota) || nota.trim() === "") {
+        alert("Nota Inválida");
+        nota = prompt(`Informe a ${i + 1} nota novamente:`);
     }
-    numero = parseInt(numero);
-    // Inserindo o numero digitado ao vetor
-    numeros.push(numero);
+    nota = parseFloat(nota);
+    // notas.push(nota); ou:
+    notas[i] = nota;
 }
 
-console.log(numeros);
+let soma = 0;
+let media = 0;
+let quant = notas.length;
+for (let j = 0; j < quant; j++) {
+    soma += notas[j];
+}
+
+media = soma / quant;
+alert(`A média das notas informadas é: ${media.toFixed(2)}`)
